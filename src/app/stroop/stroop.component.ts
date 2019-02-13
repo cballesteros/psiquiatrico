@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StroopComponent implements OnInit {
 
-  colors:string[] = ["AZUL", "VERDE", "ROJO"];
+  colors:string[] = ["AZUL", "VERDE", "ROJO", "PINK"];
 
   constructor() { }
 
