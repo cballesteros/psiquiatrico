@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StroopComponent } from './stroop/stroop.component';
+import { KingComponent } from './king/king.component';
+import { ZungComponent } from './zung/zung.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StroopComponent
+    StroopComponent,
+    KingComponent,
+    ZungComponent
   ],
   imports: [
     BrowserModule,
