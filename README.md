@@ -30,14 +30,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Development Instructions
 
-* [node.js] Install NodeJS and NPM
+* [NodeJS](https://nodejs.org/en/) Install NodeJS and NPM
 * Clone the repository:
 
 ```sh
 $ git clone https://github.com/cballesteros/psiquiatrico.git
 $ cd psiquiatrico
-$ npm install
-$ ng serve --open
 ```
 
 * Init application:
