@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## -------------------------------------------------------------
 
-## Development Instructions
+# Development Instructions
 
 * [node.js] Install NodeJS and NPM
 * Clone the repository:
@@ -47,11 +47,28 @@ $ npm install
 $ ng serve --open
 ```
 
-* Make your changes
-* Create a Pull Request
+## Let's Work!
+
+* Make you sure that you're in -master-
 
 ```sh
-$ git fetch
-$ git checkout -t origin/<remote branch>
-
+$ git checkout origin/master
+$ git pull origin master
 ```
+
+### To add new changes:
+
+* Create a new branch
+```sh
+$ git checkout -b <new remote branch>
+```
+
+* Make your changes
+* Commit and push
+```sh
+$ git add --all
+$ git commit --all -m "<Commit Message>"
+$ git push -u origin <new remote branch>
+```
+
+* Create a Pull Request
