@@ -25,3 +25,33 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## -------------------------------------------------------------
+
+## Development Instructions
+
+* [node.js] Install NodeJS and NPM
+* Clone the repository:
+
+```sh
+$ git clone https://github.com/cballesteros/psiquiatrico.git
+$ cd psiquiatrico
+$ npm install
+$ ng serve --open
+```
+
+* Init application:
+
+```sh
+$ npm install
+$ ng serve --open
+```
+
+* Make your changes
+* Create a Pull Request
+
+```sh
+$ git fetch
+$ git checkout -t origin/<remote branch>
+
+```
