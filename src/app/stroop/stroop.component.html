@@ -1,3 +1,18 @@
-<div *ngFor="let color of colors">
-    <h1>{{color}}</h1>
+<div id='stroop'>
+
+    <div *ngIf="prueba==='inicio'">
+            <button (click)="cambiarEstado()" >Iniciar Prueba</button>
+    </div>
+    <div *ngIf="prueba==='palabras'">
+        <h1  *ngFor="let palabra of palabras">{{palabra}}</h1>
+    </div>
+    <div *ngIf="prueba==='colores'">
+        <h1 *ngFor="let x of colores" id={{x}}>XXXX</h1>
+    </div>
+    <div *ngIf="prueba==='mixto'">
+        <h1 *ngFor="let color of colores; let i=index" id={{color}}>{{palabras[i]}}</h1>
+    </div>
+
+    <button (click)="cambiarEstado()" *ngIf="prueba!='inicio' && prueba!='resultados' ">Siguiente</button>
+    
 </div>
