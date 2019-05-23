@@ -7,8 +7,6 @@ import { StroopComponent } from './stroop/stroop.component';
 import { KingComponent } from './king/king.component';
 import { ZungComponent } from './zung/zung.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
