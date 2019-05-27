@@ -6,19 +6,13 @@ import { AppComponent } from './app.component';
 import { StroopComponent } from './stroop/stroop.component';
 import { KingComponent } from './king/king.component';
 import { ZungComponent } from './zung/zung.component';
-import { PalabrasComponent } from './stroop/palabras/palabras.component';
-import { ColoresComponent } from './stroop/colores/colores.component';
-import { MixtoComponent } from './stroop/mixto/mixto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StroopComponent,
     KingComponent,
-    ZungComponent,
-    PalabrasComponent,
-    ColoresComponent,
-    MixtoComponent
+    ZungComponent
   ],
   imports: [
     BrowserModule,

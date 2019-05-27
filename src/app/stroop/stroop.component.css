@@ -9,4 +9,9 @@
 
 #Rojo{
     color: red
+    
+}
+
+.selected{
+    border: red 5px solid;
 }

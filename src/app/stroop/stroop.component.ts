@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import 'annyang';
 
+declare var annyang: any;
 
 @Component({
   selector: 'app-stroop',
@@ -9,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 
 export class StroopComponent implements OnInit {
 
-  prueba:string = 'inicio';
+  annyang: any = annyang;
 
-  colores:String[] = ["Azul","Rojo","Verde","Azul","Verde","Rojo","Verde","Rojo","Azul","Rojo",
+  progressColors:number = 0;
+  
+  progressWords:number = 0;
+  
+  progressMix:number = 0;
+
+  test:string = 'words';  
+
+  colors:String[] = ["Azul","Rojo","Verde","Azul","Verde","Rojo","Verde","Rojo","Azul","Rojo",
                       "Azul", "Verde","Rojo","Verde","Azul","Verde","Azul","Rojo","Verde","Azul",
                       "Rojo","Azul","Verde","Rojo","Verde","Azul","Verde","Rojo","Azul","Rojo",
                       "Azul","Verde","Azul","Verde","Rojo","Verde","Rojo","Azul","Rojo","Verde",
@@ -22,7 +32,7 @@ export class StroopComponent implements OnInit {
                       "Rojo","Azul","Verde","Rojo","Azul","Verde","Rojo","Azul","Verde","Azul",
                       "Verde","Rojo","Azul","Verde","Rojo","Azul","Rojo","Verde","Azul","Rojo"];
 
-  palabras: String[] = ["Rojo", "Verde", "Azul", "Verde", "Rojo", "Azul", "Rojo", "Azul", "Verde", "Azul",
+  words: String[] = ["Rojo", "Verde", "Azul", "Verde", "Rojo", "Azul", "Rojo", "Azul", "Verde", "Azul",
                         "Verde", "Rojo", "Verde", "Azul", "Rojo", "Azul", "Rojo", "Verde", "Rojo", "Verde",
                         "Azul", "Verde", "Rojo", "Azul", "Rojo", "Verde", "Azul", "Verde", "Rojo", "Verde",
                         "Rojo", "Azul", "Rojo", "Azul", "Verde", "Azul", "Verde", "Rojo", "Azul", "Rojo",
@@ -32,30 +42,97 @@ export class StroopComponent implements OnInit {
                         "Rojo", "Verde", "Rojo", "Verde", "Azul", "Verde", "Rojo", "Azul", "Verde", "Azul",
                         "Azul", "Verde", "Rojo", "Azul", "Verde", "Rojo", "Verde", "Rojo", "Azul", "Verde",
                         "Rojo", "Azul", "Verde", "Rojo", "Azul", "Rojo", "Verde", "Azul", "Rojo", "Verde" ];
-  
-  
-  constructor() {}
+
+  time: number = 45000;
+
+  interval;
+
+  check(col:string){
+    switch(this.test){
+      case 'test-words':
+        if(this.words[this.progressWords]===col){
+          this.progressWords++
+          //console.log(this.progressWords)
+        }
+      break;
+      case 'test-colors':
+        if(this.colors[this.progressColors]===col){
+          this.progressColors++
+          //console.log(this.progressColors)
+        }
+      break;
+      case 'test-mix':
+        if(this.colors[this.progressMix]===col){
+          this.progressMix++
+          //console.log(this.progressMix)
+        }
+      break
+    }
+    this.cdr.detectChanges()    
+  } 
+
+  startRecognition(){
+    var commands = {
+      'rojo': ()=> {this.check("Rojo")},
+      'verde': ()=> {this.check("Verde")},
+      'azul': ()=> {this.check("Azul")}
+    }
+
+    if(annyang){
+      this.annyang.addCommands(commands);
+      this.annyang.setLanguage("es-CO")
+      this.annyang.debug()
+      annyang.start({ autoRestart: true, continuous: false });
+    }else {
+      alert(" El reconocimiento de voz no es compatible con este navegador " );
+      this.test='words'
+    }
+  }
+                       
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
   }
 
-  cambiarEstado(){
-    
-    switch(this.prueba){
-      case 'inicio':
-        this.prueba='palabras'
-        break;
-      case 'palabras':
-        this.prueba='colores'
-        break;
-      case 'colores':
-        this.prueba='mixto'
-        break;
-      case 'mixto':
-        this.prueba='resultados'
-        break;
-    }
-
+  startTimer() {
+    this.interval = setInterval(() => {
+      this.changeTest();
+      clearInterval(this.interval);
+    },this.time)
   }
 
+
+  changeTest(){
+    
+    switch(this.test){
+      case 'words':
+        this.test='test-words'
+        this.startRecognition() 
+        this.startTimer()
+        break;
+      case 'test-words':
+        this.test='colors'
+        this.annyang.pause();
+        break;
+      case 'colors':
+        this.test='test-colors'
+        this.annyang.resume()
+        this.startTimer()
+        break;
+      case 'test-colors':
+        this.test='mix'
+        this.annyang.pause();
+        break;
+      case 'mix':
+        this.test='test-mix'
+        this.annyang.resume()
+        this.startTimer()
+        break;
+      case 'test-mix':
+        this.test='resultados'
+        this.annyang.abort();
+        break;
+    }
+    //console.log(this.test)
+  }
 }
