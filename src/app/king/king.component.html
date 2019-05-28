@@ -1,3 +1,251 @@
-<p>
-  king works!
-</p>
+<div class="classTestRey">
+  <h2 class="classTitle">Test de Rey</h2>
+  <div>
+    <table align="center" style="width:40%;">
+      <th>Paciente: NOMBRE PACIENTE</th>
+      <th></th>
+      <th>ID: Numeros</th>
+    </table>
+    <br>    
+  </div>
+
+  <div class="container">
+    <form align="center" #king="ngForm">
+
+      <div class="form-group">
+        <label for="timeM">Tiempo:</label>
+        <input type="number" id="timeM" required [(ngModel)]="model.timeM" name="timeM">
+        <label> Minutos y </label>
+        <input type="number" id="timeS" required [(ngModel)]="model.timeS" name="timeS">
+        <label> Segundos</label>        
+      </div>      
+
+      <div class="container">
+        <label>Tipo de Copia:</label> <br>
+        <textarea id="copyType" rows="8" cols="35" [(ngModel)]="model.copyType" name="copyType"> </textarea>
+        {{model}}
+  
+        <br><br>
+        <label>Observaciones:</label> <br>
+        <textarea name="observaciones" rows="8" cols="35"> </textarea>
+      </div>      
+
+      <div>
+        <h3 align="center">Calificación de la prueba</h3>
+        <div class="ReyImage" ></div>    
+      </div>
+    
+      <br>
+      <table align="center" style="width:40%;">
+        <tr>
+          <th>Ausente</th>
+          <th></th>
+          <th>Bien Situada</th>
+        </tr>
+
+        <tr>
+          <td>1) <input type="checkbox" name="AusenteFig1"></td>
+          <td>
+            <select name="estadoFig1">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig1"></td>
+        </tr>
+
+        <tr>
+          <td>2) <input type="checkbox" name="AusenteFig2"></td>
+          <td>
+            <select name="estadoFig2">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig2"></td>
+        </tr>
+
+        <tr>
+          <td>3) <input type="checkbox" name="AusenteFig3"></td>
+          <td>
+            <select name="estadoFig3">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig3"></td>
+        </tr>
+
+        <tr>
+          <td>4) <input type="checkbox" name="AusenteFig4"></td>
+          <td>
+            <select name="estadoFig4">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig4"></td>
+        </tr>
+
+        <tr>
+          <td>5) <input type="checkbox" name="AusenteFig5"></td>
+          <td>
+            <select name="estadoFig5">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig5"></td>
+        </tr>
+
+        <tr>
+          <td>6) <input type="checkbox" name="AusenteFig6"></td>
+          <td>
+            <select name="estadoFig6">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig6"></td>
+        </tr>
+
+        <tr>
+          <td>7) <input type="checkbox" name="AusenteFig7"></td>
+          <td>
+            <select name="estadoFig7">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig7"></td>
+        </tr>
+
+        <tr>
+          <td>8) <input type="checkbox" name="AusenteFig8"></td>
+          <td>
+            <select name="estadoFig8">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig8"></td>
+        </tr>
+
+        <tr>
+          <td>9) <input type="checkbox" name="AusenteFig9"></td>
+          <td>
+            <select name="estadoFig9">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig9"></td>
+        </tr>
+
+        <tr>
+          <td>10) <input type="checkbox" name="AusenteFig10"></td>
+          <td>
+            <select name="estadoFig10">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig10"></td>
+        </tr>
+
+        <tr>
+          <td>11) <input type="checkbox" name="AusenteFig11"></td>
+          <td>
+            <select name="estadoFig11">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig11"></td>
+        </tr>
+
+        <tr>
+          <td>12) <input type="checkbox" name="AusenteFig12"></td>
+          <td>
+            <select name="estadoFig12">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig12"></td>
+        </tr>
+
+        <tr>
+          <td>13) <input type="checkbox" name="AusenteFig13"></td>
+          <td>
+            <select name="estadoFig13">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig13"></td>
+        </tr>
+
+        <tr>
+          <td>14) <input type="checkbox" name="AusenteFig14"></td>
+          <td>
+            <select name="estadoFig14">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig14"></td>
+        </tr>
+
+        <tr>
+          <td>15) <input type="checkbox" name="AusenteFig15"></td>
+          <td>
+            <select name="estadoFig15">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig15"></td>
+        </tr>
+
+        <tr>
+          <td>16) <input type="checkbox" name="AusenteFig16"></td>
+          <td>
+            <select name="estadoFig16">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig16"></td>
+        </tr>
+
+        <tr>
+          <td>17) <input type="checkbox" name="AusenteFig17"></td>
+          <td>
+            <select name="estadoFig17">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig17"></td>
+        </tr>
+
+        <tr>
+          <td>18) <input type="checkbox" name="AusenteFig18"></td>
+          <td>
+            <select name="estadoFig18">
+              <option value="correcta">Correcta</option>
+              <option value="incorrecta">Deformada o Incorrecta</option>
+            </select>
+          </td>
+          <td><input type="checkbox" name="SituadaFig18"></td>
+        </tr>
+      </table>
+
+      <br>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <br>
+</div>
