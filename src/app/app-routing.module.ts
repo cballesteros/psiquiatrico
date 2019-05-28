@@ -4,6 +4,7 @@ import { StroopComponent } from './stroop/stroop.component';
 import { KingComponent } from './king/king.component';
 import { ZungComponent } from './zung/zung.component';
 
+
 const routes: Routes = [
   {path: 'stroop', component: StroopComponent},
   {path: 'king', component: KingComponent},
