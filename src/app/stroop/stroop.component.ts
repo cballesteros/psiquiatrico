@@ -53,17 +53,20 @@ export class StroopComponent implements OnInit {
         if(this.words[this.progressWords]===col){
           this.progressWords++
           //console.log(this.progressWords)
+          if(this.progressWords===100)this.changeTest()
         }
       break;
       case 'test-colors':
         if(this.colors[this.progressColors]===col){
           this.progressColors++
+          if(this.progressColors===100)this.changeTest()
           //console.log(this.progressColors)
         }
       break;
       case 'test-mix':
         if(this.colors[this.progressMix]===col){
           this.progressMix++
+          if(this.progressMix===100)this.changeTest()
           //console.log(this.progressMix)
         }
       break
@@ -113,6 +116,7 @@ export class StroopComponent implements OnInit {
       case 'test-words':
         this.test='colors'
         this.annyang.pause();
+        clearInterval(this.interval);
         break;
       case 'colors':
         this.test='test-colors'
@@ -122,6 +126,7 @@ export class StroopComponent implements OnInit {
       case 'test-colors':
         this.test='mix'
         this.annyang.pause();
+        clearInterval(this.interval);
         break;
       case 'mix':
         this.test='test-mix'
@@ -131,8 +136,10 @@ export class StroopComponent implements OnInit {
       case 'test-mix':
         this.test='resultados'
         this.annyang.abort();
+        clearInterval(this.interval);
         break;
     }
-    //console.log(this.test)
+    console.log(this.test)
+    this.cdr.detectChanges()   
   }
 }
