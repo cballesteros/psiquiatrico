@@ -7,8 +7,6 @@ import { StroopComponent } from './stroop/stroop.component';
 import { KingComponent } from './king/king.component';
 import { ZungComponent } from './zung/zung.component';
 
-import { FormsModule }   from '@angular/forms';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,8 +16,7 @@ import { FormsModule }   from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
