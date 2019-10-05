@@ -1,3 +1,36 @@
-<div *ngFor="let color of colors">
-    <h1>{{color}}</h1>
+<div id='stroop'>
+   
+    <div *ngIf="test==='words' || test==='colors' || test==='mix'">
+            <button (click)="changeTest()" >Iniciar test - {{test}}</button>
+    </div>
+    <div *ngIf="test==='test-words'">
+        
+        <div *ngFor="let palabra of words; let i=index" >
+            <h1 *ngIf="i===progressWords; else noselected" class="selected" >{{palabra}}</h1>
+            <ng-template #noselected><h1>{{palabra}}</h1></ng-template>
+
+        </div>
+    </div>
+    <div *ngIf="test==='test-colors'">
+        <div *ngFor="let x of colors; let i=index" >
+            <h1 *ngIf="i===progressColors; else noselected" class="selected" id={{x}}>XXXX</h1>
+            <ng-template #noselected><h1 id={{x}}>XXXX</h1></ng-template>
+        </div>
+    </div>
+    <div *ngIf="test==='test-mix'">
+        <div *ngFor="let color of colors; let i=index"  >
+                <h1 *ngIf="i===progressMix; else noselected" class="selected"  id={{color}}>{{words[i]}}</h1> 
+                <ng-template #noselected><h1 id={{color}}>{{words[i]}}</h1></ng-template>   
+        </div>
+        
+    </div>
+
+    <div *ngIf="test==='resultados'">
+        <p> Cantidad de test-words: {{progressWords}}</p>
+        <p> Cantidad de test-colores: {{progressColors}}</p>
+        <p> Cantidad de test-mixto: {{progressMix}}</p>
+    </div>
+
+    <button (click)="changeTest()" *ngIf="test!=='words' && test!=='colors' && test!=='mix'">Finalizar test</button>
+    
 </div>
