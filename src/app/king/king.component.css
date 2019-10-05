@@ -1,0 +1,28 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+.classTitle{
+    text-align: center;
+    /*background-color: dodgerblue;*/
+}
+
+.classTestRey{
+    text-align: center;
+    /*background-color: rgb(72, 163, 255);*/
+}
+
+.ReyImage{
+    background-image: url('./Images/ReyImage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 250px;
+    height: 192px;
+    margin: 0 auto;
+}
+
+.classTestEval{
+
+    margin: 0 auto;
+    width: 500px;
+    height: 50%;
+}
