@@ -14,7 +14,7 @@ import { FormsModule }   from '@angular/forms';
     AppComponent,
     StroopComponent,
     KingComponent,
-    ZungComponent
+    ZungComponent,
   ],
   imports: [
     BrowserModule,
