@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { StroopComponent } from './stroop/stroop.component';
 import { KingComponent } from './king/king.component';
 import { ZungComponent } from './zung/zung.component';
+import { WaisComponent } from './wais/wais.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ZungComponent } from './zung/zung.component';
     StroopComponent,
     KingComponent,
     ZungComponent,
+    WaisComponent,
   ],
   imports: [
     BrowserModule,
