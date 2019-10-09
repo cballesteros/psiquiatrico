@@ -136,6 +136,8 @@ export class KingComponent implements OnInit {
                        this.computeScores(this.absentFig17, this.stateFig17, this.locatedFig17) +
                        this.computeScores(this.absentFig18, this.stateFig18, this.locatedFig18);
           console.log("Time: ", this.time, "Segundos  Score: ", this.score);
+          console.log("Observations: ", this.observ)
+          console.log("Type of copy: ", this.copyType);
         }else{
           // MENSAJE DE TIEMPO INVÁLIDO
         }
