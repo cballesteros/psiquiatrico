@@ -45,7 +45,7 @@ export class StroopComponent implements OnInit {
 
   time: number = 45000;
 
-  interval;
+  interval:any;
 
   check(col:string){
     switch(this.test){

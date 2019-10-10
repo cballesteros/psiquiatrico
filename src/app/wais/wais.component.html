@@ -1,3 +1,18 @@
-<p>
-  wais works!
-</p>
+<div>
+
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(1)" >Estimulo 1</button>
+    <button (click)="imagenInit(5)" >Estimulo 5</button>
+  </div>
+
+  <div *ngIf="estado==='aplicacion'" style="text-align:center; padding-top:5%">
+    <img [src]="estimuloActual" />
+  </div>
+
+  <div *ngIf="estado==='terminado'" style="text-align:center">
+      <h2>Terminaste la subprueba de cubos</h2>
+      <h4>Tu resultado es: {{res}}</h4>
+    </div>
+
+</div>
