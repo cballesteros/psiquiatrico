@@ -11,23 +11,26 @@ export class WaisComponent implements OnInit {
   @HostListener('window:keyup', ['$event'])
 
   keyEvent(event: KeyboardEvent) {
-    if(event.keyCode == KEY_CODE.RIGHT_ARROW){
-      this.cambiarPuntuacion(0);
-    }else if(event.keyCode == KEY_CODE.ZERO_UP){
-      this.cambiarPuntuacion(+event.key);
-    }else if(event.keyCode == KEY_CODE.ONE_UP){
-      this.cambiarPuntuacion(+event.key);
-    }else if(event.keyCode == KEY_CODE.TWO_UP){
-      this.cambiarPuntuacion(+event.key);
-    }else if(event.keyCode == KEY_CODE.FOUR_UP){
-      this.cambiarPuntuacion(+event.key);
-    }else if(event.keyCode == KEY_CODE.FIVE_UP){
-      this.cambiarPuntuacion(+event.key);
-    }else if(event.keyCode == KEY_CODE.SIX_UP){
-      this.cambiarPuntuacion(+event.key);
-    }else if(event.keyCode == KEY_CODE.SEVEN_UP){
-      this.cambiarPuntuacion(+event.key);
+    if(this.estado==='aplicacion'){
+      if(event.keyCode == KEY_CODE.RIGHT_ARROW){
+        this.cambiarPuntuacion(0);
+      }else if(event.keyCode == KEY_CODE.ZERO_UP){
+        this.cambiarPuntuacion(+event.key);
+      }else if(event.keyCode == KEY_CODE.ONE_UP){
+        this.cambiarPuntuacion(+event.key);
+      }else if(event.keyCode == KEY_CODE.TWO_UP){
+        this.cambiarPuntuacion(+event.key);
+      }else if(event.keyCode == KEY_CODE.FOUR_UP){
+        this.cambiarPuntuacion(+event.key);
+      }else if(event.keyCode == KEY_CODE.FIVE_UP){
+        this.cambiarPuntuacion(+event.key);
+      }else if(event.keyCode == KEY_CODE.SIX_UP){
+        this.cambiarPuntuacion(+event.key);
+      }else if(event.keyCode == KEY_CODE.SEVEN_UP){
+        this.cambiarPuntuacion(+event.key);
+      }
     }
+    
   }
 
   estado:String = 'seleccion';// Esta variable me dice en que estado 
@@ -45,10 +48,10 @@ export class WaisComponent implements OnInit {
   terminacion:number = 0; //Esta variable me dice cuantos ceros consecutivos tuvo el paciente
 
   retorno:boolean = false; // Esta variable me ayuda a controlar el uso de la regla del retorno
+  countRe:number = 0; //Esta variable me dice cuando se puede salir de la condición de retorno
+  flagRe:number = null;//Esta variable me ayuda a decir en que posicion quedo el paciente antes de entrar al retorno 
 
   interval:any;
-
-  res:number = 0; 
 
   constructor() { }
 
@@ -83,25 +86,31 @@ export class WaisComponent implements OnInit {
         //Este verificacion me dice si se cumple la condición para retornar y asi devolverse en caso de ser necesario
         if((this.indexActual === 5 || this.indexActual === 6) && this.resultados[this.indexActual]===0){
           this.retorno = true;
-          this.indexActual = 4;
+          this.flagRe = this.indexActual;
+          this.indexActual = 5;
         }
   
         if(!this.retorno){ //En caso de no haber fallado los items 5 0 6 sigue aumentado a partir de ahí
           this.indexActual++;
           this.estimuloActual = "assets/estimulos/cubos/" + this.estimulos[this.indexActual];
         }else{ //En caso de que halla fallado el item 5 o el 6 vuelve al item 4 y empieza a disminuir desde ahí
-          this.indexActual--;
-          this.estimuloActual = "assets/estimulos/cubos/" + this.estimulos[this.indexActual];
+          
+          if(this.countRe===2){
+            this.retorno = false;
+            this.indexActual = this.flagRe + 1;
+            this.estimuloActual = "assets/estimulos/cubos/" + this.estimulos[this.indexActual];
+          }else{
+            this.indexActual--;
+            this.estimuloActual = "assets/estimulos/cubos/" + this.estimulos[this.indexActual];
+          }
+          
         }
       }
 
       this.startTimer(this.times[this.indexActual]);
 
     }else{
-      this.res = this.getResultado();
-      console.log(this.resultados);
       this.estado = 'terminado';
-      
     }
   }
 
@@ -116,8 +125,23 @@ export class WaisComponent implements OnInit {
         this.resultados[this.indexActual] = punt;
         this.terminacion++
       }
+
+      if(this.countRe>0){
+        this.countRe=0;
+      }
      
     }else{
+
+      if(this.retorno){
+        if(punt===2){
+          this.countRe++
+        }else{
+          if(this.countRe>0){
+            this.countRe=0;
+          }
+        }
+      }
+
       if(this.terminacion > 0){
         this.resultados[this.indexActual] = punt;
         this.terminacion = 0
@@ -132,7 +156,6 @@ export class WaisComponent implements OnInit {
   //Timer: En caso de que la imagen pase por que se acabo el tiempo se dará una calificación de 0 al item
   startTimer(time:number) {
     this.interval = setInterval(() => {
-      alert(this.terminacion);
       this.cambiarPuntuacion(0);
     },time)
   }
@@ -143,6 +166,26 @@ export class WaisComponent implements OnInit {
       total = total + this.resultados[i];
     }
     return total;
+  }
+
+  //En caso de que el estado sea revision
+
+  aRevisar(){
+    this.estado = 'revision';
+  }
+
+  regresarAct(){
+    this.estado = 'terminado';
+  }
+
+  actualizarResultados(){
+    
+    for(let j = 1;j<this.resultados.length;j++){
+      var x = (<HTMLInputElement>document.getElementById(""+j)).value;
+      this.resultados[j] = +x;
+    }
+    
+    this.estado = 'terminado';
   }
 
 }// Fin export class WaisComponent
