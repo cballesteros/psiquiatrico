@@ -1,33 +1,17 @@
-<div>
-
-  <div *ngIf="estado==='seleccion'">
-    <p>En que estimulo desea iniciar la prueba? </p>
-    <button (click)="imagenInit(1)" >Estimulo 1</button>
-    <button (click)="imagenInit(5)" >Estimulo 5</button>
-  </div>
-
-  <div *ngIf="estado==='aplicacion'" style="text-align:center; padding-top:5%">
-    <img [src]="estimuloActual" />
-  </div>
-
-  <div *ngIf="estado==='terminado'" style="text-align:center">
-      <h2>Terminaste la subprueba de cubos</h2>
-      <h4>Tu resultado es: {{getResultado()}}</h4>
-      <button (click)="aRevisar()" >Revisión de resultados</button>
-  </div>
-
-  <div *ngIf="estado==='revision'" style="text-align:center">
-    <h3>El puntaje por cada Item fue: </h3>
-    <form id="myForm">
-      <div *ngFor="let resultado of resultados; let i=index" >
-        <div *ngIf="i!==0">
-          <label for="i">Item {{i}}:</label>
-          <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
-        </div>
-      </div>
-      <button (click)="regresarAct()" >Regresar</button>
-      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
-    </form>
-  </div>
-
-</div>
+<p>
+  <button routerLink="/bloques">Cubos</button>
+  <button routerLink="/semejanzas">Semejanzas</button>
+  <button routerLink="/digitos">Digitos</button>
+  <button routerLink="/matrices">Matrices</button>
+  <button routerLink="/vocabulario">Vocabulario</button>
+  <button routerLink="/aritmetica">Aritmetica</button>
+  <button routerLink="/busquedaSimbolos">Busqueda de Simbolos</button>
+  <button routerLink="/puzlesVisuales">Puzles Visuales</button>
+  <button routerLink="/informacion">Informacion</button>
+  <button routerLink="/claveNumeros">Clave de Numeros</button>
+  <button routerLink="/letrasNumeros">Letras y Numeros</button>
+  <button routerLink="/balanzas">Balanzas</button>
+  <button routerLink="/comprension">Comprension</button>
+  <button routerLink="/cancelacion">Cancelacion</button>
+  <button routerLink="/figurasIncompletas">Figuras Incompletas</button>
+</p>
