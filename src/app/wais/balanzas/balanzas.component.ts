@@ -29,7 +29,7 @@ export class BalanzasComponent implements OnInit {
 
   numberItem:number = 1
 
-  resultados:number[] = new Array(30).fill(0);
+  resultados:number[] = new Array(27).fill(0);
 
   respuestas:number[] = [5,1,2,3,4,1,4,4,5,1,2,5,3,1,4,1,3,3,2,2,2,5,3,5,1,2,4]
 
@@ -65,6 +65,7 @@ export class BalanzasComponent implements OnInit {
       else{
         if(this.respuestas[this.numberItem-1]===key){
           this.resultados[this.numberItem-1]=1 
+          this.terminacion=0
         }
         else{
 
@@ -83,11 +84,8 @@ export class BalanzasComponent implements OnInit {
 
       if(this.retorno)this.numberItem--;
       else this.numberItem++;
-
-      console.log(this.flagRe)
-      console.log(this.numberItem)
       
-      if(this.numberItem===7 || this.numberItem===0)this.estado='resultados'
+      if(this.numberItem===28 || this.numberItem===0)this.estado='resultados'
       else{
         if(this.numberItem<=12)this.startTimer(20000);
         else this.startTimer(40000);
@@ -101,6 +99,9 @@ export class BalanzasComponent implements OnInit {
       this.resultados[0]=1
       this.resultados[1]=1
       this.resultados[2]=1
+    }
+    else{
+      this.retornoHecho=false
     }
 
     this.numberItem=item
@@ -130,15 +131,33 @@ export class BalanzasComponent implements OnInit {
         if(this.numberItem<=12)this.startTimer(20000);
         else this.startTimer(40000);
         break;
+      case 'resultados':
+        this.estado='revision'
+        break;
+      case 'revision':
+          this.estado='resultados'
+          break;
+
     }
   }
 
 
   //Timer: En caso de que la imagen pase por que se acabo el tiempo se dará una calificación de 0 al item
   startTimer(time:number) {
+    clearInterval(this.interval);
     this.interval = setInterval(() => {
       this.cambiarPrueba(0)
     },time)
+  }
+
+  actualizarResultados(){
+    
+    for(let j = 1;j<this.resultados.length;j++){
+      var x = (<HTMLInputElement>document.getElementById(""+j)).value;
+      this.resultados[j] = +x;
+    }
+    
+    this.estado = 'resultados';
   }
 
 
