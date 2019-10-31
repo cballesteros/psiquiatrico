@@ -83,7 +83,7 @@ export class BloquesComponent implements OnInit {
         this.indexActual++;
         this.estimuloActual = "assets/estimulos/cubos/" + this.estimulos[this.indexActual];
   
-      }else if(this.indexInicial===5){ // Si el indice inicial es 4 se compara para verificar el retorno
+      }else if(this.indexInicial===5){ // Si el indice inicial es 5 se compara para verificar el retorno
   
         //Este verificacion me dice si se cumple la condición para retornar y asi devolverse en caso de ser necesario
         if((this.indexActual === 5 || this.indexActual === 6) && this.resultados[this.indexActual]===0){
