@@ -1,3 +1,30 @@
-<p>
-  balanzas works!
-</p>
+<div>
+
+  
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(1)" >Estimulo 1</button>
+    <p>Pacientes de edad 16-69:</p>
+    <button (click)="imagenInit(4)" >Estimulo 4</button>
+    <p>No aplicar a paciente de edad  70-89</p>
+  </div>
+
+  
+  <div *ngIf="estado==='a' || estado==='b' 
+  || estado==='ejemplo' " style="text-align:center; padding-top:5%">
+      <h1> Estimulo {{estado}}</h1>
+      <img   [src]="'assets/estimulos/balanzas/'+estado+'.png'" />
+      <button (click)="next()" >Siguiente </button>
+  </div>
+
+  <div *ngIf="estado==='test'" style="text-align:center; padding-top:5%">
+      <h1> Estimulo {{numberItem}}</h1>
+      <img   [src]="'assets/estimulos/balanzas/'+numberItem+'.png'" />
+  </div>
+
+  <div *ngIf="estado==='resultados'">
+      <h1>Terminaste la subprueba de balanzas</h1>
+      <h2>Tu resultado es: {{getResultado()}}</h2>
+  </div>
+
+</div>
