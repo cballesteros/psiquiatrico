@@ -1,3 +1,32 @@
-<p>
-  puzles-visuales works!
-</p>
+<div style="text-align:center;">
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(2)" >Estimulo 1</button>
+    <button (click)="imagenInit(6)" >Estimulo 5</button>
+  </div>
+
+  <div *ngIf="estado==='aplicacion'">
+    <img [src]="estimuloActual"/>    
+  </div>
+
+  <div *ngIf="estado==='terminado'">
+    <h2>Terminaste la subprueba de Puzles Visuales</h2>
+    <h4>Tu resultado es: {{getResultado()}}</h4>
+    <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >
+        <div *ngIf="i>1">
+          <label for="i">Item: {{i-1}}:</label>
+          <input type="text" id="{{i-1}}" value={{resultado}}/>
+        </div>
+      </div>
+      <br>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+</div>
