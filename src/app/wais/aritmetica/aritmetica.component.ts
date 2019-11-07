@@ -114,9 +114,9 @@ export class AritmeticaComponent implements OnInit {
         if(!this.retorno){ //En caso de no haber fallado los items 6 0 7 sigue aumentado a partir de ahí
           this.indexActual++;
           this.consignaActual = this.consigna[this.indexActual];
-        }else{ //En caso de que halla fallado el item 6 o el 7 vuelve al item 4 y empieza a disminuir desde ahí
+        }else{ //En caso de que halla fallado el item 6 o el 7 vuelve al item 5 y empieza a disminuir desde ahí
           
-          if(this.countRe===2){
+          if(this.countRe===5){
             this.retorno = false;
             this.indexActual = this.flagRe + 1;
             if(this.indexActual<6){

@@ -14,8 +14,10 @@
       <h2> {{items[itemNumber][intento].join('-')}}</h2>
 
 
-      <h2>Respuesta Correcta</h2>
-      <h2> {{items[itemNumber][intento].join('-') }}</h2>
+      <h2>Respuestas Correcta</h2>
+      <h2> {{respuesta[itemNumber][intento].sort().join('-') }}</h2>
+
+      <h2 *ngIf="itemNumber!==0 && itemNumber!==1"> {{respuestas[itemNumber][intento].join('-') }}</h2>
 
   </div>
 
