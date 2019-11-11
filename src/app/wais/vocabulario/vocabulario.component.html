@@ -1,3 +1,50 @@
-<p>
-  vocabulario works!
-</p>
+<div style="text-align:center;">
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(1)" >Estimulo 1</button>
+    <button (click)="imagenInit(5)" >Estimulo 5</button>
+  </div>
+
+  <div *ngIf="estado==='ejemplo' || estado==='aplicacionImg' || estado==='aplicacion'">
+    <h1>{{consignaActual}}</h1> <br/>
+  </div>
+
+  <div *ngIf="estado==='aplicacionImg'">
+    <img [src]="estimuloActual" />
+  </div>
+
+  <div *ngIf="estado==='ejemplo' || estado==='aplicacionImg' || estado==='aplicacion'">
+    <input type="text" required id="res"  [(ngModel)]="respuestaDada" name="respuestaDada"> <br/>
+    <button (click)="cambiarPuntuacion(0)" >0</button>
+    <button (click)="cambiarPuntuacion(1)" >1</button>
+    <button (click)="cambiarPuntuacion(2)" >2</button>
+  </div>
+
+  <div *ngIf="estado==='terminado'">
+      <h2>Terminaste la subprueba de vocabulario</h2>
+      <h4>Tu resultado es: {{getResultado()}}</h4>
+      <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div class="row">
+        <div class="col-sm-3"><label for="item">Item No.</label></div>
+        <div class="col-sm-3"><label for="puntuacion">Puntuación</label></div>
+        <div class="col-sm-3"><label for="respuestaDada">Respuesta dada:</label></div>
+      </div>
+      <div *ngFor="let resultado of resultados; let i=index" >
+        
+          <div class="row">
+            <div class="col-sm-3"><label for="i">{{i}}:</label></div>
+            <div class="col-sm-3"><input type="text" id="{{i}}" value={{resultado}}/></div>
+            <div class="col-sm-3"><input readonly type="text" value={{respuestasDadas[i]}}/></div>
+          </div>          
+        
+      </div>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+</div>
