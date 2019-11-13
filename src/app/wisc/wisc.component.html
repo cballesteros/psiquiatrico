@@ -1,0 +1,27 @@
+<div>
+  <div *ngIf="estado==='edad'">
+    <p>Inserte la fecha de nacimiento del paciente</p>
+    <input type="date" [(ngModel)]="fechaNacimiento" /> <br/>
+    <button (click)="CalcularEdad()">Siguiente</button> <br/>
+  </div>
+
+  <div *ngIf="estado==='subpruebas'">
+    <br>    
+    <button routerLink="/bloques">Cubos</button>
+    <button routerLink="/semejanzas">Semejanzas</button>
+    <button routerLink="/digitos">Digitos</button>
+    <button >Dibujos</button>
+    <button routerLink="/claveNumeros">Clave de Numeros</button>
+    <button routerLink="/vocabulario">Vocabulario</button>
+    <button routerLink="/letrasNumeros">Letras y Numeros</button>
+    <button routerLink="/matrices">Matrices</button>
+    <button routerLink="/comprension">Comprension</button>
+    <button routerLink="/busquedaSimbolos">Busqueda de Simbolos</button>
+    <button routerLink="/figurasIncompletas">Figuras Incompletas</button>
+    <button >Registros</button>
+    <button routerLink="/informacion">Informacion</button>
+    <button routerLink="/aritmetica">Aritmetica</button>
+    <button>Pistas</button>
+  </div>
+</div>
+
