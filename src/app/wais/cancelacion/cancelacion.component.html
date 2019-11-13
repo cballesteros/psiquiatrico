@@ -1,0 +1,30 @@
+<div>
+  
+  <div *ngIf="estado==='seleccion'">
+    <p>Pacientes de edad 16-69:</p>
+    <button (click)="estado='test'">Iniciar prueba</button>
+  </div>
+
+  <div *ngIf="estado==='test'">
+      <h1> Item #{{pruebas+1}}</h1>
+    <h1>00:{{cronometro}}</h1>
+    <button *ngIf="!activo" (click)="iniCron()">Iniciar </button>
+    <button (click)="finPrueba()">Prueba finalizada </button>
+  </div>
+
+  <div *ngIf="estado==='resul'">
+    <h1> Item #{{pruebas+1}}</h1>
+    <h2>Respuestas correctas</h2>
+    <input type="number" id="correcto" value={{resultado}} style="margin: 5px"/>
+    <h2>Respuestas incorrectas</h2>
+    <input type="number" id="error" value={{resultado}} style="margin: 5px"/>
+    <button (click)="finTest()">Siguiente</button>
+  </div>
+
+  <div *ngIf="estado==='resultados'">
+      <h1>Terminaste la subprueba de cancelacion</h1>
+      <h2>Tu resultado es: {{puntuacion}}</h2>
+  </div>
+
+
+</div>

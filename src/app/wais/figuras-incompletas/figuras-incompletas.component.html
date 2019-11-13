@@ -1,0 +1,44 @@
+<div>
+
+  
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(1)" >Estimulo 1</button>
+    <p>Pacientes de edad 16-89:</p>
+    <button (click)="imagenInit(4)" >Estimulo 4</button>
+  </div>
+
+  
+  <div *ngIf="estado==='ejemplo' " style="text-align:center; padding-top:5%">
+      <h1> Estimulo {{estado}}</h1>
+      <img   [src]="'assets/estimulos/figurasIncompletas/'+estado+'.png'" />
+      <button (click)="next()" >Iniciar </button>
+  </div>
+
+  <div *ngIf="estado==='test'" style="text-align:center; padding-top:5%">
+      <h1> Estimulo {{numberItem}}</h1>
+      <img   [src]="'assets/estimulos/figurasIncompletas/'+numberItem+'.png'" />
+  </div>
+
+  <div *ngIf="estado==='resultados'">
+      <h1>Terminaste la subprueba de balanzas</h1>
+      <h2>Tu resultado es: {{getResultado()}}</h2>
+      <button (click)="next()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'" style="text-align:center">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >
+        <div>
+          <label for="i">Item {{i+1}}:</label>
+          <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
+        </div>
+      </div>
+      <button (click)="next()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+
+</div>
+

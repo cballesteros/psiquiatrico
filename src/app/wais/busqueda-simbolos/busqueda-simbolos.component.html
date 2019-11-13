@@ -1,0 +1,62 @@
+<div style="text-align:center;">
+  <div *ngIf="estado==='aplicacion'">
+    <br>
+    <div>
+      <label>Página 1 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag1C"  [(ngModel)]="pag1C" name="pag1C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag1I"  [(ngModel)]="pag1I" name="pag1I">
+    </div>
+    <div>
+      <label>Página 2 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag2C"  [(ngModel)]="pag2C" name="pag2C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag2I"  [(ngModel)]="pag2I" name="pag2I">
+    </div>
+    <div>
+      <label>Página 3 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag3C"  [(ngModel)]="pag3C" name="pag3C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag3I"  [(ngModel)]="pag3I" name="pag3I">
+    </div>
+    <div>
+      <label>Página 4 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag4C"  [(ngModel)]="pag4C" name="pag4C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag4I"  [(ngModel)]="pag4I" name="pag4I">
+    </div>
+    <div>
+      <label>Página 5 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag5C"  [(ngModel)]="pag5C" name="pag5C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag5I"  [(ngModel)]="pag5I" name="pag5I">
+    </div>
+    <div>
+      <label>Página 6 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag6C"  [(ngModel)]="pag6C" name="pag6C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag6I"  [(ngModel)]="pag6I" name="pag6I">
+    </div>
+    <div>
+      <label>Página 7 - </label>
+      <label>Correctas: </label>
+      <input type="number" required id="pag7C"  [(ngModel)]="pag7C" name="pag7C">
+      <label>Incorrectas: </label>
+      <input type="number" required id="pag7I"  [(ngModel)]="pag7I" name="pag7I">
+    </div>
+
+    <br>
+    <button (click)="calcularResultado()" ><span class="glyphicon glyphicon-arrow-right"></span></button>
+  </div>
+
+  <div *ngIf="estado==='terminado'">
+    <h2>Terminaste la subprueba de Busqueda de Simbolos</h2>
+    <h4>Tu resultado es: {{resultado}}</h4>
+  </div>  
+</div>

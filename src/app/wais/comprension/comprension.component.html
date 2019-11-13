@@ -1,0 +1,73 @@
+<div>
+
+  <div *ngIf="estado==='inicio'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(0)" >Estimulo 1</button>
+    <p>Pacientes de edad 16-89:</p>
+    <button (click)="imagenInit(2)" >Estimulo 3</button>
+    <p>No aplicar a paciente de edad  70-89</p>
+  </div>
+  
+  <div *ngIf="estado==='test'">
+      <h1>Pregunta #{{itemNumber+1}}</h1>
+
+      <h2 *ngIf="itemNumber===0">Porque la gente lleva reloj?</h2>
+
+      <h2 *ngIf="itemNumber===1">Porque lavamos la ropa?</h2>
+
+      <h2 *ngIf="itemNumber===2">Que deberia hacer usted  si se encuentra en la calle un sobre cerrado con la direccion escrita y el sello sin usar?</h2>
+
+      <h2 *ngIf="itemNumber===3">Porque nos interesamos, cada vez mas en las energias renovables?</h2>
+
+      <h2 *ngIf="itemNumber===4">Digame algunas razones por las que es importante que un pais tenga buenas relaciones con otro pais.</h2>
+
+      <h2 *ngIf="itemNumber===5">Que interes puede tener un inventor en patnetar una idea?</h2>
+
+      <h2 *ngIf="itemNumber===6">Porque hay museos?</h2>
+
+      <h2 *ngIf="itemNumber===7">Porque se necesita receta para comprar ciertos medicamentos?</h2>
+
+      <h2 *ngIf="itemNumber===8">Porque fue importante, para algunas civilizaciones,la creacion  de la escritura?</h2>
+
+      <h2 *ngIf="itemNumber===9">Porque es importante para la mayoria de la gente, tener amigos?</h2>
+
+      <h2 *ngIf="itemNumber===10">Digame algunas razones por las que algunas personas piensan que deberiamos explorar el espacio.</h2>
+
+      <h2 *ngIf="itemNumber===11">Porque es importante el estudio de la historia?</h2>
+
+      <h2 *ngIf="itemNumber===12">Porque exije el estado que algunos profesionales obtengan el titulo antes de ofrecer sus servicios al publico?</h2>
+  
+      <h2 *ngIf="itemNumber===13">Que quiere decir el proverbio "si caes siete veces, levantate ocho"?</h2>
+      
+      <h2 *ngIf="itemNumber===14">Porque algunas personas piensan que es importante proteger a los animales en peligro de extincion?</h2>
+
+      <h2 *ngIf="itemNumber===15">Porque cuesta mas un terreno en la ciudad que en el campo?</h2>
+
+      <h2 *ngIf="itemNumber===16">Digame algunas razones por las que conviene  que haya un regimen de libertad condicional.</h2>
+
+      <h2 *ngIf="itemNumber===17">Que quiere decir el refran "una golondrina no hace verano"</h2>
+
+  </div>
+
+  <div *ngIf="estado==='resultados'">
+    <h1>resultados</h1>
+
+    <h1>Puntuacion:{{getResultado()}}</h1>
+    <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'" style="text-align:center">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >
+        <div>
+          <label for="i">Item {{i+1}}:</label>
+          <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
+        </div>
+      </div>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+  
+</div>

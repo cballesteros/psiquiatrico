@@ -1,0 +1,64 @@
+<div style="text-align:center;">
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="testInit(0)" >Item 1</button>
+    <button (click)="testInit(2)" >Item 3</button>
+  </div>
+
+  <div *ngIf="estado==='aplicacion'">
+    <h4>{{consignaActual}}</h4>
+  </div>
+
+  <div *ngIf="estado==='aplicacion'">
+    <div class="row">
+      <div class="col-sm-6"><label for="punto1">1 Punto</label></div>
+      <div class="col-sm-6"><label for="punto0">0 Puntos</label></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6"><textarea  readonly cols='85' rows='8'>{{respuestaCorrectaAct}}</textarea></div>
+      <div class="col-sm-6"><textarea readonly cols='85' rows='8'>{{respuestaErroneaAct}}</textarea></div>
+    </div>
+    
+      <label for="comentarioA">{{comentarioAct}}</label>
+    
+  </div>
+
+  <div *ngIf="estado==='aplicacion'">
+    <br>
+    <label>Respuesta dada:  </label>
+    <input type="text" required id="respuestaDada"  [(ngModel)]="respuestaDada" name="respuestaDada">
+    <div>
+      <div class="row"><label>Puntuación: </label></div>
+      <div>
+        <div>
+          <input type="radio" id="radioPunto0" name="radioPunto0" [(ngModel)]="radioPunto" [value]="defRadioPunto0">
+          <label for="defaultInline1">0</label>
+        </div>      
+        
+        <div>
+          <input type="radio" id="radioPunto1" name="radioPunto1" [(ngModel)]="radioPunto" [value]="defRadioPunto1">
+          <label for="defaultInline2">1</label>
+        </div>
+      </div>
+    </div>
+    <button (click)="verificarResultado()" ><span class="glyphicon glyphicon-arrow-right"></span></button>
+  </div>
+
+  <div *ngIf="estado==='terminado'">
+      <h2>Terminaste la subprueba de información</h2>
+      <h4>Tu resultado es: {{getResultado()}}</h4>
+      <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >        
+        <label for="i">Item: {{i+1}}:</label>
+        <input type="text" id="{{i}}" value={{resultado}}/>
+      </div>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+</div>

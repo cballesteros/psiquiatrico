@@ -1,0 +1,34 @@
+<div>
+  <div *ngIf="estado==='selectDirecto' || estado==='selectInverso' || estado==='selectCreciente'">
+    <button (click)="iniciar()" >Iniciar Digitos en Orden {{tipo}}</button>
+  </div>
+
+  <div *ngIf="estado==='directo'" style="text-align:center; padding-top:5%">
+    <h3> Dígitos a evaluar: {{itemActual}} </h3>
+    <textarea id="res"></textarea> <br/> <br/>
+    <button (click)="cambiarpuntuacion()" >Siguiente</button>
+  </div>
+
+  <div *ngIf="estado==='inverso'" style="text-align:center; padding-top:5%">
+    <h3>Dígitos a evaluar: {{itemActual}} </h3>
+    <textarea id="res"></textarea> <br/> <br/>
+    <button (click)="cambiarpuntuacion()" >Siguiente</button>
+  </div>
+
+  <div *ngIf="estado==='creciente'" style="text-align:center; padding-top:5%">
+    <h3> Dígitos a evaluar: {{itemActual}} </h3>
+    <textarea id="res"></textarea> <br/> <br/>
+    <button (click)="cambiarpuntuacion()" >Siguiente</button>
+  </div>
+
+  <div *ngIf="estado==='terminado'" style="text-align:center">
+      <h2>Terminaste la subprueba de dígitos</h2>
+      <h4>Tu resultado es: {{getResultado()}}</h4>
+      <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'" style="text-align:center">
+    <h3>Revision pendiente </h3>
+    <button (click)="regresarAct()" >Regresar</button>
+  </div>
+</div>

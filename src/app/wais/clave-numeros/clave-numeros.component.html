@@ -1,0 +1,17 @@
+<div style="text-align:center;">
+
+  <div *ngIf="estado==='aplicacion'">
+    <br>
+    <div>
+      <label>Puntuación del paciente: </label>
+      <input type="number" required id="resultado"  [(ngModel)]="resultado" name="resultado">
+    </div>
+    <br>
+    <button (click)="MostrarResumen()" ><span class="glyphicon glyphicon-arrow-right"></span></button>
+  </div>
+
+  <div *ngIf="estado==='terminado'">
+    <h2>Terminaste la subprueba de Clave de números</h2>
+    <h4>Tu resultado es: {{resultado}}</h4>
+  </div>  
+</div>

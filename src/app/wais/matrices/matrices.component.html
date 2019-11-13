@@ -1,0 +1,31 @@
+<div>
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="imagenInit(2)" >Estimulo 1</button>
+    <button (click)="imagenInit(5)" >Estimulo 4</button>
+  </div>
+
+  <div *ngIf="estado==='aplicacion'" style="text-align:center; padding-top:5%">
+    <img [src]="estimuloActual" />
+  </div>
+
+  <div *ngIf="estado==='terminado'" style="text-align:center">
+      <h2>Terminaste la subprueba de matrices</h2>
+      <h4>Tu resultado es: {{getResultado()}}</h4>
+      <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'" style="text-align:center">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >
+        <div *ngIf="i!==0 && i!==1">
+          <label for="i">Item {{i-1}}:</label>
+          <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
+        </div>
+      </div>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+</div>

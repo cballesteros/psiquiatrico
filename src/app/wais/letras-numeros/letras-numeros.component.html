@@ -1,0 +1,47 @@
+<div>
+
+
+
+  <button (click)="startTest()"
+   *ngIf="estado==='inicio'">
+   Empezar test</button>
+  
+  
+  <div *ngIf="estado==='test'">
+      <h1>Item #{{itemNumber+1}}</h1>
+
+      <h2>Intento</h2>
+      <h2> {{items[itemNumber][intento].join('-')}}</h2>
+
+
+      <h2>Respuestas Correcta</h2>
+      <h2> {{respuesta[itemNumber][intento].sort().join('-') }}</h2>
+
+      <h2 *ngIf="itemNumber!==0 && itemNumber!==1"> {{respuestas[itemNumber][intento].join('-') }}</h2>
+
+  </div>
+
+  <div *ngIf="estado==='resultados'">
+    <h1>resultados</h1>
+
+    <h1>Puntuacion:{{getResultado()}}</h1>
+    <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'" style="text-align:center">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >
+        <div>
+          <h2 *ngIf="i%3===0">Item {{(i/3)+1}}</h2>
+          <label for="i">Intento {{i%3+1}}:</label>
+          <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
+        </div>
+      </div>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+
+  
+</div>

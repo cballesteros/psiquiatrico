@@ -1,0 +1,40 @@
+<div>
+  <div *ngIf="estado==='seleccion'">
+    <p>En que estimulo desea iniciar la prueba? </p>
+    <button (click)="selectInit(1)" >Item 1</button>
+    <button (click)="selectInit(4)" >Item 4</button>
+  </div>
+
+  <div *ngIf="estado==='ejemplos'" style="text-align:center; padding-top:5%">
+    <h3>¿En que se parecen {{ejemplo[0]}} y {{ejemplo[1]}}? </h3>
+    <textarea></textarea> <br/> <br/>
+    <button (click)="aplicar()" >Siguiente</button>
+  </div>
+
+  <div *ngIf="estado==='aplicacion'" style="text-align:center; padding-top:5%">
+    <h3>En que se parecen {{itemActual[0]}} y {{itemActual[1]}} </h3>
+    <textarea id="res"></textarea> <br/> <br/>
+    <button (click)="cambiarPuntuacion(0)" >0</button>
+    <button (click)="cambiarPuntuacion(1)" >1</button>
+    <button (click)="cambiarPuntuacion(2)" >2</button>
+  </div>
+
+  <div *ngIf="estado==='terminado'" style="text-align:center">
+      <h2>Terminaste la subprueba de semejanzas</h2>
+      <h4>Tu resultado es: {{getResultado()}}</h4>
+      <button (click)="aRevisar()" >Revisión de resultados</button>
+  </div>
+
+  <div *ngIf="estado==='revision'" style="text-align:center">
+    <h3>El puntaje por cada Item fue: </h3>
+    <form id="myForm">
+      <div *ngFor="let resultado of resultados; let i=index" >
+        <label for="i">Item {{i+1}}:</label>
+        <label for="i"> {{respuestas[i]}} </label>
+        <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
+      </div>
+      <button (click)="regresarAct()" >Regresar</button>
+      <button type="submit" (click)="actualizarResultados()" >Actualizar Datos</button>
+    </form>
+  </div>
+</div>
