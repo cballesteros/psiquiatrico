@@ -14,11 +14,9 @@ export class PuzlesVisualesComponent implements OnInit {
       if(event.keyCode == KEY_CODE.RIGHT_ARROW){
         this.verificarResultado(0);
       }else if(event.keyCode == KEY_CODE.ONE_UP){
-        this.verificarResultado(+event.key);
-      }else if(event.keyCode == KEY_CODE.TWO_UP){
-        this.verificarResultado(+event.key);
+        this.verificarResultado(1);    
       }else if(event.keyCode == KEY_CODE.ZERO_UP){
-        this.verificarResultado(+event.key);      
+        this.verificarResultado(0);      
       }
     }
     
@@ -64,13 +62,12 @@ export class PuzlesVisualesComponent implements OnInit {
     if(this.terminacion < 3 && this.indexActual < 27){ // Verifica que no se haya cumplido la condicion de termino
 
       if(this.indexActual === 0){ //este es el indice de demostración
-
-        this.indexActual++;
+        this.indexActual = this.indexActual + 1;
         this.estimuloActual = "assets/estimulos/PuzlesVisuales/" +  this.estimulos[this.indexActual];
 
       }else if(this.indexActual === 1){ // Este es el indice del ejemplo por lo que luego de este se envia al estimulo inicial
 
-        this.indexActual = this.indexInicial
+        this.indexActual = this.indexInicial;
         this.estimuloActual = "assets/estimulos/PuzlesVisuales/" + this.estimuloInicial
 
       }else if(this.indexInicial===2){ // Si el indice inicial es 1 no se compara para verificar el retorno
@@ -87,10 +84,11 @@ export class PuzlesVisualesComponent implements OnInit {
         }
   
         if(!this.retorno){ //En caso de no haber fallado los items 5 0 6 sigue aumentado a partir de ahí
-          this.indexActual++;
-        }else{ //En caso de que halla fallado el item 5 o el 6 vuelve al item 4 y empieza a disminuir desde ahí
-          
-          if(this.countRe===5){
+          this.indexActual++; 
+          this.estimuloActual = "assets/estimulos/PuzlesVisuales/" + this.estimulos[this.indexActual];
+
+        }else{ //En caso de que halla fallado el item 5 o el 6 vuelve al item 4 y empieza a disminuir desde ahí          
+          if(this.countRe===2){
             this.retorno = false;
             this.indexActual = this.flagRe + 1;
             this.estimuloActual = "assets/estimulos/PuzlesVisuales/" + this.estimulos[this.indexActual];
@@ -108,10 +106,11 @@ export class PuzlesVisualesComponent implements OnInit {
     }
   }
 
-  verificarResultado(respuestaDada:number){
-    if(respuestaDada === 0 || respuestaDada === 0){
+  verificarResultado(respuestaDada:number){    
+    if(respuestaDada === 0){
       this.cambiarPuntuacion(0);
-    }else if(respuestaDada === 1){
+    }
+    if(respuestaDada === 1){
       this.cambiarPuntuacion(1);
     }
   }

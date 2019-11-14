@@ -12,8 +12,8 @@ export class AritmeticaComponent implements OnInit {
   respuestaDada:String; // Variable del input de respuesta
 
   estimulos:String[] = ["01.jpg","02.jpg","03.jpg","04.jpg","05.jpg"];
-  respuestas:String[] = ['3','3','10','6','9','2','8','5','5','17','5','3','200','38','140',null,null,'600','47',null,'51','216','23100'];
-  //                    [ej,1,2 ,3,4,5,6,7,8,9,10,11...]
+  respuestas:String[] = ['3','3','10','6','9','2','8','5','5','17','5','3','200','38','140','30 min ó 1/2 hora','186 min ó 3h 06 min','600','47','49 1/2','51','216','23100'];
+  //                    [ej,1,2,3,4,5,6,7,8,9,10,11...]
   resultados:number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   respuestasDadas:String[] = ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'];
   consigna:String[] = ["Juan tiene 6 pelotas.Pierde 3 ¿Cuantas pelotas le quedan?",
@@ -81,6 +81,7 @@ export class AritmeticaComponent implements OnInit {
 
       if(this.indexActual>0 && this.indexActual<5){ //Cambia el estado actual para no mostrar o mostrar la img cuando sea necesario
         this.estado = 'aplicacionImg';
+        this.estimuloActual = "assets/estimulos/aritmetica/" + this.estimulos[this.indexActual];
       }else if(this.indexActual>=5){
         this.estado = 'aplicacion';
       }
@@ -116,18 +117,22 @@ export class AritmeticaComponent implements OnInit {
           this.consignaActual = this.consigna[this.indexActual];
         }else{ //En caso de que halla fallado el item 6 o el 7 vuelve al item 5 y empieza a disminuir desde ahí
           
-          if(this.countRe===5){
+          if(this.countRe===2){
             this.retorno = false;
             this.indexActual = this.flagRe + 1;
             if(this.indexActual<6){
+              this.estado = 'aplicacionImg';
               this.estimuloActual = "assets/estimulos/aritmetica/" + this.estimulos[this.indexActual];
+            }else{
+              this.estado = 'aplicacion';
             }
             this.consignaActual = this.consigna[this.indexActual];
             
           }else{
             this.indexActual--;
             if(this.indexActual<6){
-              this.estimuloActual = "assets/estimulos/aritmetica/" + this.estimulos[this.indexActual];
+              this.estado = 'aplicacionImg';
+              this.estimuloActual = "assets/estimulos/aritmetica/" + this.estimulos[this.indexActual-1];
             }
             this.consignaActual = this.consigna[this.indexActual];
           }
