@@ -4,6 +4,7 @@ import { StroopComponent } from './stroop/stroop.component';
 import { KingComponent } from './king/king.component';
 import { ZungComponent } from './zung/zung.component';
 import { WaisComponent } from './wais/wais.component';
+import { WiscComponent } from './wisc/wisc.component';
 import { BloquesComponent } from './wais/bloques/bloques.component';
 import { SemejanzasComponent } from './wais/semejanzas/semejanzas.component';
 import { DigitosComponent } from './wais/digitos/digitos.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'king', component: KingComponent},
   {path: 'zung', component: ZungComponent},
   {path: 'wais', component: WaisComponent},
+  {path: 'wisc', component: WiscComponent},
   {path: 'bloques', component: BloquesComponent},
   {path: 'semejanzas', component: SemejanzasComponent},
   {path: 'digitos', component: DigitosComponent},

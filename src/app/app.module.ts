@@ -23,6 +23,7 @@ import { BalanzasComponent } from './wais/balanzas/balanzas.component';
 import { ComprensionComponent } from './wais/comprension/comprension.component';
 import { CancelacionComponent } from './wais/cancelacion/cancelacion.component';
 import { FigurasIncompletasComponent } from './wais/figuras-incompletas/figuras-incompletas.component';
+import { WiscComponent } from './wisc/wisc.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { FigurasIncompletasComponent } from './wais/figuras-incompletas/figuras-
     ComprensionComponent,
     CancelacionComponent,
     FigurasIncompletasComponent,
+    WiscComponent,
   ],
   imports: [
     BrowserModule,

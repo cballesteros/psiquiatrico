@@ -1,4 +1,4 @@
-import { Component, OnInit,HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-comprension',
@@ -7,26 +7,18 @@ import { Component, OnInit,HostListener } from '@angular/core';
 })
 export class ComprensionComponent implements OnInit {
 
-  @HostListener('window:keyup', ['$event'])
-
-  keyEvent(event: KeyboardEvent) {
-    if(this.estado==='test'){
-      if(event.keyCode == KEY_CODE.ZERO_UP
-        || event.keyCode == KEY_CODE.ONE_UP
-        || event.keyCode == KEY_CODE.TWO_UP){
-        this.cambiarPrueba(+event.key);
-      }
-    }
-  }
-
 
   estado:string = 'inicio';
   
   itemNumber:number = 0;
 
+  respuestaDada:string = '';
+
   fallo:number = 0;
 
   resultados:number[] = new Array(18).fill(0);
+
+  respuestas:string[] = new Array(18).fill("");
 
   cambiarPrueba(key){
     if(this.estado==='test' && this.itemNumber<18){
@@ -43,13 +35,18 @@ export class ComprensionComponent implements OnInit {
         }
         else if(key===1 || key===2)this.fallo=0;
       }
+
+      this.respuestas[this.itemNumber]=this.respuestaDada
+
+      this.respuestaDada=''
+
     }
     else if(this.itemNumber===18)this.estado='resultados'
+
   }
 
-
-
   constructor() { }
+
 
   ngOnInit() {
   }
@@ -101,20 +98,4 @@ export class ComprensionComponent implements OnInit {
 
 }
 
-export enum KEY_CODE {
-  UP_ARROW = 38,
-  DOWN_ARROW = 40,
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37,
-  ONE_UP = 49,
-  TWO_UP = 50, 
-  THREE_UP = 51, 
-  FOUR_UP = 52, 
-  FIVE_UP = 53, 
-  SIX_UP = 54, 
-  SEVEN_UP = 55, 
-  EIGHT_UP = 56, 
-  NINE_UP = 57, 
-  ZERO_UP = 48
-}
 
