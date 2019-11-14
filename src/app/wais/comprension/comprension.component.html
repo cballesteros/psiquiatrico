@@ -47,6 +47,11 @@
 
       <h2 *ngIf="itemNumber===17">Que quiere decir el refran "una golondrina no hace verano"</h2>
 
+      <input type="text" required id="res"   [(ngModel)]="respuestaDada" name="respuestaDada"> <br/>
+
+      <button (click)="cambiarPrueba(0)" >0</button>
+      <button (click)="cambiarPrueba(1)" >1</button>
+      <button (click)="cambiarPrueba(2)" >2</button>
   </div>
 
   <div *ngIf="estado==='resultados'">
@@ -63,6 +68,10 @@
         <div>
           <label for="i">Item {{i+1}}:</label>
           <input type="number" id="{{i}}" value={{resultado}} style="margin: 5px"/>
+        </div>
+        <div>
+          <label for="i">Respuesta {{i+1}}:</label>
+          <input type="text" id="{{i}}" value={{respuestas[i]}} style="margin: 5px"/>
         </div>
       </div>
       <button (click)="regresarAct()" >Regresar</button>
